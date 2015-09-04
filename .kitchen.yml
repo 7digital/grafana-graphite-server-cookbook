@@ -1,0 +1,17 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+- name: debian-jessie-x64-7digital
+  driver_config:
+    box: 7digital/debian8-amd64
+    box_url: http://ofc-build00.nix.sys.7d:8080/job/debian-jessie-x64-7digital/lastSuccessfulBuild/artifact/build/box.json
+
+suites:
+  - name: linux
+    run_list:
+      - recipe[grafana-graphite-server::default]

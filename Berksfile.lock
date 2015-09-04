@@ -1,0 +1,7 @@
+DEPENDENCIES
+  grafana-graphite-server
+    path: .
+    metadata: true
+
+GRAPH
+  grafana-graphite-server (0.0.1)
