@@ -7,3 +7,5 @@ long_description 'Runs them via Docker'
 version          '0.0.1'
 
 supports 'debian'
+
+depends 'docker'
