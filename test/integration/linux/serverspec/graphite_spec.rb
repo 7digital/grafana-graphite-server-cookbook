@@ -11,5 +11,6 @@ describe 'graphite' do
     its(['HostConfig.PortBindings']) { should include '8125/udp' }
     its(['HostConfig.PortBindings.8125/udp.[0].HostPort']) { should eq '8125' }
     it { should have_volume('/opt/graphite/storage/whisper', '/var/whisper') }
+    it { should have_volume('/opt/graphite/conf', '/var/graphite-configs') }
   end
 end
