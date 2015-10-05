@@ -7,4 +7,5 @@ docker_container 'graphite' do
     '/var/whisper:/opt/graphite/storage/whisper',
     '/var/graphite-configs:/opt/graphite/conf'
   ]
+  restart_policy 'always'
 end
