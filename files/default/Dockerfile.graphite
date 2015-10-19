@@ -1,0 +1,4 @@
+FROM hopsoft/graphite-statsd
+
+COPY graphite-configs /opt/graphite/conf
+COPY statsd-configs /opt/statsd
