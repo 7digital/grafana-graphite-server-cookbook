@@ -26,7 +26,7 @@ docker_container 'graphite-statsd' do
   repo '7d-graphite-statsd'
   port [
     '8125:8125/udp',
-    '8080:80'
+    '8080:80' # For integration tests
   ]
   binds ['/var/whisper:/opt/graphite/storage/whisper']
   restart_policy 'always'
