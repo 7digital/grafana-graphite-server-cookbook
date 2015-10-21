@@ -12,6 +12,7 @@ platforms:
     box_url: http://ofc-build00.nix.sys.7d:8080/job/debian-jessie-x64-7digital/lastSuccessfulBuild/artifact/build/box.json
     network:
       - ["forwarded_port", {guest: 80, host: 8080}]
+      - ["forwarded_port", {guest: 8125, host: 8125}]
 
 suites:
   - name: linux
