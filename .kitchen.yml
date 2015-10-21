@@ -10,6 +10,8 @@ platforms:
   driver_config:
     box: 7digital/debian8-amd64
     box_url: http://ofc-build00.nix.sys.7d:8080/job/debian-jessie-x64-7digital/lastSuccessfulBuild/artifact/build/box.json
+    network:
+      - ["forwarded_port", {guest: 80, host: 8080}]
 
 suites:
   - name: linux
