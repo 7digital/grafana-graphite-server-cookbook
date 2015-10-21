@@ -1,8 +1,10 @@
 require 'serverspec'
 set :backend, :exec
 
+grafana_version = '2.1.3'
+
 describe 'grafana' do
-  describe docker_image('grafana/grafana') do
+  describe docker_image("grafana/grafana:#{grafana_version}") do
     it { should exist }
   end
 
