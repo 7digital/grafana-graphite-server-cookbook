@@ -19,13 +19,15 @@ end
 docker_image '7d-graphite-statsd' do
   source image_build_folder
   nocache true
-  #todo: tag w/the cookbook version & use below?
   action :build_if_missing
 end
 
 docker_container 'graphite-statsd' do
   repo '7d-graphite-statsd'
-  port '8125:8125/udp'
+  port [
+    '8125:8125/udp',
+    '8080:80'
+  ]
   binds ['/var/whisper:/opt/graphite/storage/whisper']
   restart_policy 'always'
 end
