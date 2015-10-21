@@ -11,7 +11,15 @@ The cookbuild builds wrapper Docker images locally on the machine to add configu
 
 ```
 $ bundle install
-$ kitchen test
+$ kitchen test --destroy=never
+$ curl localhost:8080
 ```
 
 NB: Don't forget to bump the version number in `metadata.rb` after making changes!
+
+## TODO
+
+* Ensure grafana dashboards are getting stored outside the container
+* Tweak config files for statsd & graphite
+* Cron job to auto delete unused whisper files
+* Run Docker 1.8 (ServerSpec needs patched to support changes in `docker inspect` for this to work)
