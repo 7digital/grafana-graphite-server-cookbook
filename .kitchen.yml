@@ -6,7 +6,7 @@ provisioner:
   name: chef_zero
 
 platforms:
-- name: debian-jessie-x64-7digital
+- name: debian-jessie-amd64-7digital
   driver_config:
     box: 7digital/debian8-amd64
     box_url: http://teamcity.win.sys.7d/guestAuth/repository/download/Systems_Machines_DebianVagrantBoxes/.lastSuccessful/build/debian-jessie-amd64-7digital.json
