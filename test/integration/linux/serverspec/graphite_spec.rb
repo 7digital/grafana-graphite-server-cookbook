@@ -27,7 +27,7 @@ describe 'graphite' do
     random_stat_name = SecureRandom.uuid
     describe command("curl -f 'localhost:8080/graphlot/rawdata?from=-24hour&until=-0hour&target=stats.gauges.#{random_stat_name}'") do
       `echo "#{random_stat_name}:100|g" | nc -u -q0 127.0.0.1 8125`
-      sleep 5 # sleep so we can give it time to flush to disk
+      sleep 8 # sleep so we can give it time to flush to disk
       its(:exit_status) { should eq 0 }
     end
   end
