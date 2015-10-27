@@ -8,8 +8,8 @@ cookbook_file "#{image_build_folder}/Dockerfile" do
   source 'Dockerfile.graphite'
 end
 
-remote_directory "#{image_build_folder}/graphite-configs" do
-  source 'graphite-configs'
+remote_directory "#{image_build_folder}/graphite-backend-configs" do
+  source 'graphite-backend-configs'
 end
 
 remote_directory "#{image_build_folder}/statsd-configs" do
