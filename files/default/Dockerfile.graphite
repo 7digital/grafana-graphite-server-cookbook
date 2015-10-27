@@ -1,4 +1,5 @@
 FROM hopsoft/graphite-statsd
 
 COPY graphite-backend-configs /opt/graphite/conf
+COPY graphite-web-configs /opt/graphite/webapp/graphite
 COPY statsd-configs /opt/statsd

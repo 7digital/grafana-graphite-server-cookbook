@@ -12,6 +12,10 @@ remote_directory "#{image_build_folder}/graphite-backend-configs" do
   source 'graphite-backend-configs'
 end
 
+remote_directory "#{image_build_folder}/graphite-web-configs" do
+  source 'graphite-web-configs'
+end
+
 remote_directory "#{image_build_folder}/statsd-configs" do
   source 'statsd-configs'
 end
