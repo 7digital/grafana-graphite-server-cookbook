@@ -11,6 +11,7 @@
 # CRSF middleware, cookie storage, etc. This should be set identically among
 # instances if used behind a load balancer.
 #SECRET_KEY = 'UNSAFE_DEFAULT'
+SECRET_KEY = '$(date +%s | sha256sum | base64 | head -c 64)'
 
 # In Django 1.5+ set this to the list of hosts your graphite instances is
 # accessible as. See:
@@ -20,7 +21,7 @@
 # Set your local timezone (Django's default is America/Chicago)
 # If your graphs appear to be offset by a couple hours then this probably
 # needs to be explicitly set to your local timezone.
-#TIME_ZONE = 'America/Los_Angeles'
+TIME_ZONE = 'UTC'
 
 # Override this to provide documentation specific to your Graphite deployment
 #DOCUMENTATION_URL = "http://graphite.readthedocs.org/"
@@ -75,7 +76,7 @@
 #WHISPER_DIR = '/opt/graphite/storage/whisper'
 #RRD_DIR = '/opt/graphite/storage/rrd'
 #DATA_DIRS = [WHISPER_DIR, RRD_DIR] # Default: set from the above variables
-#LOG_DIR = '/opt/graphite/storage/log/webapp'
+LOG_DIR = '/var/log/graphite'
 #INDEX_FILE = '/opt/graphite/storage/index'  # Search index file
 
 
