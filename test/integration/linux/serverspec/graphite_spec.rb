@@ -19,6 +19,19 @@ describe 'graphite' do
     its(['HostConfig.PortBindings.80.[0].HostPort']) { should eq '8080' }
   end
 
+  describe 'old stat cleanup' do
+    `touch /var/whisper/new.file`
+    `touch -t 200805101024 /var/whisper/old.file`
+    `run-parts /etc/cron.daily`
+    describe file('/var/whisper/new.file') do
+      it { should be_file }
+    end
+
+    describe file('/var/whisper/old.file') do
+      it { should_not be_file }
+    end
+  end
+
   describe 'end-to-end' do
     describe command('curl localhost:8080/dashboard') do
       its(:stdout) { should match (/Graphite Dashboard/) }

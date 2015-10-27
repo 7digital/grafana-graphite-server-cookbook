@@ -25,5 +25,5 @@ NB: Don't forget to bump the version number in `metadata.rb` after making change
 
 - [x] Ensure grafana dashboards are getting stored outside the container (stored in the mounted `/var/grafana/grafana.db` sqlite db file)
 - [x] Tweak config files for statsd & graphite
-- [ ] Cron job to auto delete unused whisper files
+- [x] Cron job to auto delete unused whisper files
 - [ ] Run Docker 1.8 (ServerSpec needs patched to support changes in `docker inspect` for this to work)

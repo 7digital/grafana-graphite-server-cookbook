@@ -33,6 +33,11 @@ docker_container 'graphite-statsd' do
     '8125:8125/udp',
     '8080:80' # For integration tests
   ]
-  binds ['/var/whisper:/opt/graphite/storage/whisper']
+  binds ['/var/whisper:/opt/graphite/storage/whisper'] # This mount point is needed in the whisper cleanup cron job
   restart_policy 'always'
+end
+
+cookbook_file '/etc/cron.daily/whisper-cleanup' do
+  source 'whisper-cleanup'
+  mode 0755
 end

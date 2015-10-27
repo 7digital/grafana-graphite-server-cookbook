@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+
+#Delete stats untouched for longer than 7 days
+find /var/whisper -type f -mtime +7 -delete
