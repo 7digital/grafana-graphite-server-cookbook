@@ -20,10 +20,3 @@ $ kitchen test --destroy=never
   * `while true; do echo -n "test:$(((RANDOM % 10) + 1))|c" | nc -w 1 -u localhost 8125; done`
 
 NB: Don't forget to bump the version number in `metadata.rb` after making changes!
-
-### TODO
-
-- [x] Ensure grafana dashboards are getting stored outside the container (stored in the mounted `/var/grafana/grafana.db` sqlite db file)
-- [x] Tweak config files for statsd & graphite
-- [x] Cron job to auto delete unused whisper files
-- [ ] Run Docker 1.8 (PR submitted - waiting for merge & gem update for this to be finished)
