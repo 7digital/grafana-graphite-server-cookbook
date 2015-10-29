@@ -5,5 +5,5 @@ DEPENDENCIES
 
 GRAPH
   docker (1.0.21)
-  grafana-graphite-server (0.0.1)
+  grafana-graphite-server (1.0.0)
     docker (>= 0.0.0)
