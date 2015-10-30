@@ -15,8 +15,8 @@ describe 'graphite' do
     its(['HostConfig.RestartPolicy.Name']) { should eq 'always' }
 
     # For integration tests, normal grafana -> graphite communication can happen via a Docker link
-    its(['HostConfig.PortBindings']) { should include '80' }
-    its(['HostConfig.PortBindings.80.[0].HostPort']) { should eq '8080' }
+    its(['HostConfig.PortBindings']) { should include '80/tcp' }
+    its(['HostConfig.PortBindings.80/tcp.[0].HostPort']) { should eq '8080' }
   end
 
   describe 'old stat cleanup' do
