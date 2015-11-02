@@ -16,4 +16,10 @@ describe 'grafana' do
     its(['HostConfig.RestartPolicy.Name']) { should eq 'always' }
     its(['HostConfig.Links']) { should include '/graphite-statsd:/grafana/graphite-statsd' }
   end
+
+  describe 'end-to-end' do
+    describe command('curl -v localhost 2>&1') do
+      its(:stdout) { should match (/Set-Cookie: grafana/) }
+    end
+  end
 end
