@@ -6,10 +6,8 @@ provisioner:
   name: chef_zero
 
 platforms:
-- name: debian-jessie-amd64-7digital
+- name: debian/jessie64
   driver_config:
-    box: 7digital/debian8-amd64
-    box_url: http://teamcity.win.sys.7d/guestAuth/repository/download/Systems_Machines_DebianVagrantBoxes/.lastSuccessful/build/debian-jessie-amd64-7digital.json
     network:
       - ["forwarded_port", {guest: 80, host: 8080}]
       - ["forwarded_port", {guest: 8125, host: 8125}]
