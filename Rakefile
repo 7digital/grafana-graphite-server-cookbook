@@ -1,11 +1,16 @@
 require 'rake'
-require 'rspec/core/rake_task'
 require 'foodcritic'
+require 'rubocop/rake_task'
 
-FoodCritic::Rake::LintTask.new
+namespace :linting do
+  desc 'Chef linting'
+  FoodCritic::Rake::LintTask.new(:chef)
 
-RSpec::Core::RakeTask.new(:spec) do |t|
-  t.pattern = 'test/**/*_spec.rb'
+  desc 'Ruby linting'
+  RuboCop::RakeTask.new(:ruby)
 end
 
-task :default => :spec
+desc 'All linting'
+task lint: ['linting:chef', 'linting:ruby']
+
+task default: %w(lint)
