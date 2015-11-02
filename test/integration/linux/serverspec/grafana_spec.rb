@@ -14,12 +14,14 @@ describe 'grafana' do
     its(['HostConfig.PortBindings.3000/tcp.[0].HostPort']) { should eq '80' }
     it { should have_volume('/var/lib/grafana', '/var/grafana') }
     its(['HostConfig.RestartPolicy.Name']) { should eq 'always' }
-    its(['HostConfig.Links']) { should include '/graphite-statsd:/grafana/graphite-statsd' }
+    its(['HostConfig.Links']) do
+      should include '/graphite-statsd:/grafana/graphite-statsd'
+    end
   end
 
   describe 'end-to-end' do
     describe command('curl -v localhost 2>&1') do
-      its(:stdout) { should match (/Set-Cookie: grafana/) }
+      its(:stdout) { should match(/Set-Cookie: grafana/) }
     end
   end
 end

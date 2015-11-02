@@ -14,7 +14,7 @@ describe 'graphite' do
     it { should have_volume('/opt/graphite/storage/whisper', '/var/whisper') }
     its(['HostConfig.RestartPolicy.Name']) { should eq 'always' }
 
-    # For integration tests, normal grafana -> graphite communication can happen via a Docker link
+    # For integration tests, normal grafana->graphite comms use a Docker link
     its(['HostConfig.PortBindings']) { should include '80/tcp' }
     its(['HostConfig.PortBindings.80/tcp.[0].HostPort']) { should eq '8080' }
   end
@@ -34,11 +34,14 @@ describe 'graphite' do
 
   describe 'end-to-end' do
     describe command('curl localhost:8080/dashboard') do
-      its(:stdout) { should match (/Graphite Dashboard/) }
+      its(:stdout) { should match(/Graphite Dashboard/) }
     end
 
     random_stat_name = SecureRandom.uuid
-    describe command("curl -f 'localhost:8080/graphlot/rawdata?from=-24hour&until=-0hour&target=stats.gauges.#{random_stat_name}'") do
+    get_url = 'localhost:8080/graphlot/rawdata?' \
+              'from=-1hour&until=-0hour&target=stats.gauges.' + random_stat_name
+
+    describe command("curl -f '#{get_url}'") do
       `echo "#{random_stat_name}:100|g" | nc -u -q0 127.0.0.1 8125`
       sleep 8 # sleep so we can give it time to flush to disk
       its(:exit_status) { should eq 0 }
