@@ -13,7 +13,12 @@ The cookbuild builds wrapper Docker images locally on the machine to add configu
 
 ```
 $ bundle install
+
+# Run tests & keep the box up to play with:
 $ kitchen test --destroy=never
+
+# Run integration tests & linting:
+$ rake all
 ```
 
 * Browse to [http://localhost:8080](http://localhost:8080) (default user/pass: admin)
