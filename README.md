@@ -27,3 +27,9 @@ $ rake all
   * `while true; do echo -n "test:$(((RANDOM % 10) + 1))|c" | nc -w 1 -u localhost 8125; done`
 
 NB: Don't forget to bump the version number in `metadata.rb` after making changes!
+
+### Debugging
+
+You can log into running Docker containers via (pick your container):
+
+`sudo docker exec -it {graphite-statsd|grafana} bash`
