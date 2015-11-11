@@ -13,14 +13,26 @@ describe 'grafana' do
     it { should have_volume('/var/lib/grafana', '/var/grafana') }
     it { should have_volume('/var/log/grafana', '/var/log/grafana') }
     its(['HostConfig.RestartPolicy.Name']) { should eq 'always' }
+
     its(['HostConfig.Links']) do
       should include '/graphite-statsd:/grafana/graphite-statsd'
     end
+
+    its(['Config.Env']) { should include 'GF_AUTH_ANONYMOUS_ENABLED=true' }
+    its(['Config.Env']) { should include 'GF_AUTH_ANONYMOUS_ORG_ROLE=Editor' }
   end
 
   describe 'end-to-end' do
-    describe command('curl -v localhost 2>&1') do
-      its(:stdout) { should match(/Set-Cookie: grafana/) }
+    describe 'allows anonymous login' do
+      describe command('curl -v localhost 2>&1') do
+        its(:stdout) { should match(/<title>Grafana<\/title>/) }
+      end
+    end
+
+    describe 'grants editor role to anonymous' do
+      describe command('curl -v localhost 2>&1') do
+        its(:stdout) { should match(/"orgRole":"Editor"/) }
+      end
     end
   end
 end
