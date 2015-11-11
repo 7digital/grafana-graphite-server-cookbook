@@ -2,7 +2,7 @@ require 'serverspec'
 set :backend, :exec
 
 describe 'grafana' do
-  describe docker_image("7d-grafana") do
+  describe docker_image('7d-grafana') do
     it { should exist }
   end
 
@@ -25,7 +25,7 @@ describe 'grafana' do
   describe 'end-to-end' do
     describe 'allows anonymous login' do
       describe command('curl -v localhost 2>&1') do
-        its(:stdout) { should match(/<title>Grafana<\/title>/) }
+        its(:stdout) { should match(/<title>Grafana/) }
       end
     end
 
