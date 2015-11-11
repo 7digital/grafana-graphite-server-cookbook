@@ -12,6 +12,8 @@ describe 'graphite' do
     its(['HostConfig.PortBindings']) { should include '8125/udp' }
     its(['HostConfig.PortBindings.8125/udp.[0].HostPort']) { should eq '8125' }
     it { should have_volume('/opt/graphite/storage/whisper', '/var/whisper') }
+    it { should have_volume('/var/log/graphite', '/var/log/graphite') }
+    it { should have_volume('/var/log/statsd', '/var/log/statsd') }
     its(['HostConfig.RestartPolicy.Name']) { should eq 'always' }
 
     # For integration tests, normal grafana->graphite comms use a Docker link

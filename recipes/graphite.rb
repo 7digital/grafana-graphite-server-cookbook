@@ -35,7 +35,9 @@ docker_container 'graphite-statsd' do
   ]
   binds [
     # This mount point is needed in the whisper cleanup cron job
-    '/var/whisper:/opt/graphite/storage/whisper'
+    '/var/whisper:/opt/graphite/storage/whisper',
+    '/var/log/graphite:/var/log/graphite',
+    '/var/log/statsd:/var/log/statsd'
   ]
   restart_policy 'always'
 end

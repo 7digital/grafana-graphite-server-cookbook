@@ -13,6 +13,7 @@ describe 'grafana' do
     its(['HostConfig.PortBindings']) { should include '3000/tcp' }
     its(['HostConfig.PortBindings.3000/tcp.[0].HostPort']) { should eq '80' }
     it { should have_volume('/var/lib/grafana', '/var/grafana') }
+    it { should have_volume('/var/log/grafana', '/var/log/grafana') }
     its(['HostConfig.RestartPolicy.Name']) { should eq 'always' }
     its(['HostConfig.Links']) do
       should include '/graphite-statsd:/grafana/graphite-statsd'
