@@ -1,8 +1,10 @@
 require 'serverspec'
 set :backend, :exec
 
+cookbook_version = '2.1.0'
+
 describe 'grafana' do
-  describe docker_image('7d-grafana') do
+  describe docker_image("7d-grafana:#{cookbook_version}") do
     it { should exist }
   end
 

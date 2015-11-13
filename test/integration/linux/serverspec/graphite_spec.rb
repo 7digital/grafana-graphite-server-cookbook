@@ -2,8 +2,10 @@ require 'serverspec'
 require 'securerandom'
 set :backend, :exec
 
+cookbook_version = '2.1.0'
+
 describe 'graphite' do
-  describe docker_image('7d-graphite-statsd') do
+  describe docker_image("7d-graphite-statsd:#{cookbook_version}") do
     it { should exist }
   end
 

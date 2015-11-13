@@ -9,14 +9,18 @@ cookbook_file "#{image_build_folder}/Dockerfile" do
   source 'Dockerfile.grafana'
 end
 
+cookbook_version = run_context.cookbook_collection[cookbook_name].metadata.version
+
 docker_image image_name do
   source image_build_folder
+  tag cookbook_version
   nocache true
   action :build_if_missing
 end
 
 docker_container 'grafana' do
   repo image_name
+  tag cookbook_version
   port '80:3000'
   binds [
     '/var/grafana:/var/lib/grafana',

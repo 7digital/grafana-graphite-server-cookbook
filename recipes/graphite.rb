@@ -21,14 +21,18 @@ remote_directory "#{image_build_folder}/statsd-configs" do
   source 'statsd-configs'
 end
 
+cookbook_version = run_context.cookbook_collection[cookbook_name].metadata.version
+
 docker_image image_name do
   source image_build_folder
+  tag cookbook_version
   nocache true
   action :build_if_missing
 end
 
 docker_container 'graphite-statsd' do
   repo image_name
+  tag cookbook_version
   port [
     '8125:8125/udp',
     '8080:80' # For integration tests
