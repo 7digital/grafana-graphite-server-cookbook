@@ -18,7 +18,6 @@ describe 'graphite' do
     it { should have_volume('/var/log/statsd', '/var/log/statsd') }
     its(['HostConfig.RestartPolicy.Name']) { should eq 'always' }
 
-    # For integration tests, normal grafana->graphite comms use a Docker link
     its(['HostConfig.PortBindings']) { should include '80/tcp' }
     its(['HostConfig.PortBindings.80/tcp.[0].HostPort']) { should eq '8080' }
   end
@@ -42,8 +41,7 @@ describe 'graphite' do
     end
 
     random_stat_name = SecureRandom.uuid
-    get_url = 'localhost:8080/graphlot/rawdata?' \
-              'from=-1hour&until=-0hour&target=stats.gauges.' + random_stat_name
+    get_url = 'localhost:8080/graphlot/rawdata?from=-1hour&until=-0hour&target=stats.gauges.' + random_stat_name
 
     describe command("curl -f '#{get_url}'") do
       `echo "#{random_stat_name}:100|g" | nc -u -q0 127.0.0.1 8125`

@@ -35,7 +35,7 @@ docker_container 'graphite-statsd' do
   tag cookbook_version
   port [
     '8125:8125/udp',
-    '8080:80' # For integration tests
+    '8080:80'
   ]
   binds [
     # This mount point is needed in the whisper cleanup cron job
