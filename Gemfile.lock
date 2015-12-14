@@ -152,9 +152,9 @@ GEM
     solve (1.2.1)
       dep_selector (~> 1.0)
       semverse (~> 1.1)
-    specinfra (2.44.5)
+    specinfra (2.45.0)
       net-scp
-      net-ssh (~> 2.7)
+      net-ssh (>= 2.7, < 3.1)
       net-telnet
       sfl
     test-kitchen (1.4.2)
