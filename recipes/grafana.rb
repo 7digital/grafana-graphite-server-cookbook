@@ -28,7 +28,7 @@ docker_container 'grafana' do
   ]
   env [
     'GF_AUTH_ANONYMOUS_ENABLED=true',
-    'GF_AUTH_ANONYMOUS_ORG_ROLE=Editor'
+    'GF_AUTH_ANONYMOUS_ORG_ROLE=Admin'
   ]
   links ['graphite-statsd']
   restart_policy 'always'

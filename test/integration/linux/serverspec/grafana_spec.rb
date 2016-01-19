@@ -21,7 +21,7 @@ describe 'grafana' do
     end
 
     its(['Config.Env']) { should include 'GF_AUTH_ANONYMOUS_ENABLED=true' }
-    its(['Config.Env']) { should include 'GF_AUTH_ANONYMOUS_ORG_ROLE=Editor' }
+    its(['Config.Env']) { should include 'GF_AUTH_ANONYMOUS_ORG_ROLE=Admin' }
   end
 
   describe 'end-to-end' do
@@ -33,7 +33,7 @@ describe 'grafana' do
 
     describe 'grants editor role to anonymous' do
       describe command('curl -v localhost 2>&1') do
-        its(:stdout) { should match(/"orgRole":"Editor"/) }
+        its(:stdout) { should match(/"orgRole":"Admin"/) }
       end
     end
   end
