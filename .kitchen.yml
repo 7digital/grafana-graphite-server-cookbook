@@ -11,6 +11,7 @@ platforms:
     network:
       - ["forwarded_port", {guest: 80, host: 8080}]
       - ["forwarded_port", {guest: 8125, host: 8125}]
+      - ["forwarded_port", {guest: 8126, host: 8126}]
 
 suites:
   - name: linux
