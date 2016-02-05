@@ -2,7 +2,7 @@ require 'serverspec'
 require 'securerandom'
 set :backend, :exec
 
-cookbook_version = '2.3.1'
+cookbook_version = '2.3.2'
 
 describe 'graphite' do
   describe docker_image("7d-graphite-statsd:#{cookbook_version}") do
@@ -12,9 +12,9 @@ describe 'graphite' do
   describe docker_container('graphite-statsd') do
     it { should be_running }
     its(['HostConfig.PortBindings']) { should include '8125/udp' }
-    its(['HostConfig.PortBindings']) { should include '8126/udp' }
-    its(['HostConfig.PortBindings.8126/udp.[0].HostPort']) { should eq '8126' }
+    its(['HostConfig.PortBindings']) { should include '8126/tcp' }
     its(['HostConfig.PortBindings.8125/udp.[0].HostPort']) { should eq '8125' }
+    its(['HostConfig.PortBindings.8126/tcp.[0].HostPort']) { should eq '8126' }
     it { should have_volume('/opt/graphite/storage/whisper', '/var/whisper') }
     it { should have_volume('/var/log/graphite', '/var/log/graphite') }
     it { should have_volume('/var/log/statsd', '/var/log/statsd') }
