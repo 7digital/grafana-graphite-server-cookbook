@@ -35,6 +35,7 @@ docker_container 'graphite-statsd' do
   tag cookbook_version
   port [
     '8125:8125/udp',
+    '8126:8126/udp',
     '8080:80'
   ]
   binds [
