@@ -7,5 +7,5 @@ GRAPH
   compat_resource (12.7.1)
   docker (2.4.11)
     compat_resource (~> 12.7.1)
-  grafana-graphite-server (2.3.2)
+  grafana-graphite-server (2.4.2)
     docker (>= 0.0.0)
