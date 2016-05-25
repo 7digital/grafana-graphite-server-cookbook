@@ -1,26 +1,13 @@
-image_build_folder = '/opt/docker-images/grafana'
-image_name = '7d-grafana'
+grafana_repo = 'grafana/grafana'
+grafana_version = '3.0.3'
 
-directory image_build_folder do
-  recursive true
-end
-
-cookbook_file "#{image_build_folder}/Dockerfile" do
-  source 'Dockerfile.grafana'
-end
-
-cookbook_version = run_context.cookbook_collection[cookbook_name].metadata.version
-
-docker_image image_name do
-  source image_build_folder
-  tag cookbook_version
-  nocache true
-  action :build_if_missing
+docker_image grafana_repo do
+  tag grafana_version
 end
 
 docker_container 'grafana' do
-  repo image_name
-  tag cookbook_version
+  repo grafana_repo
+  tag grafana_version
   port '80:3000'
   binds [
     '/var/grafana:/var/lib/grafana',
