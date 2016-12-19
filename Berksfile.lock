@@ -4,8 +4,8 @@ DEPENDENCIES
     metadata: true
 
 GRAPH
-  compat_resource (12.10.4)
-  docker (2.7.1)
-    compat_resource (>= 12.9.0)
-  grafana-graphite-server (3.4.2)
+  compat_resource (12.16.2)
+  docker (2.13.1)
+    compat_resource (>= 12.16.2)
+  grafana-graphite-server (3.4.3)
     docker (>= 0.0.0)
