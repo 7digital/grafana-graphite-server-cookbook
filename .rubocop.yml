@@ -1,2 +1,8 @@
-Style/LineLength:
+Metrics/LineLength:
   Enabled: false
+Style/NumericLiteralPrefix:
+  EnforcedOctalStyle: zero_only
+Metrics/BlockLength:
+  Enabled: false  
+AllCops:
+  DisplayCopNames: true

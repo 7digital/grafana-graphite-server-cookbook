@@ -1,7 +1,7 @@
 require 'serverspec'
 set :backend, :exec
 
-expected_grafana_version = '3.0.3'
+expected_grafana_version = '4.2.0'
 
 describe 'grafana' do
   describe docker_image("grafana/grafana:#{expected_grafana_version}") do
