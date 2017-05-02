@@ -24,5 +24,5 @@ namespace :integration do
   end
 end
 
-task default: %w(lint)
-task all: %w(lint integration:vagrant)
+task default: %w[lint]
+task all: %w[lint integration:vagrant]
