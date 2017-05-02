@@ -1,3 +1,3 @@
 docker_service 'default' do
-  action [:create, :start]
+  action %i[create start]
 end
