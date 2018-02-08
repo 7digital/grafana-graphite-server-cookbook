@@ -49,5 +49,5 @@ end
 
 cookbook_file '/etc/cron.daily/whisper-cleanup' do
   source 'whisper-cleanup'
-  mode 0755
+  mode 0o755
 end
