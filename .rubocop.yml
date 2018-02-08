@@ -1,2 +1,8 @@
-Style/LineLength:
+Metrics/LineLength:
   Enabled: false
+Metrics/ModuleLength:
+  Enabled: false  
+Metrics/BlockLength:
+  Exclude:
+    - 'test/integration/linux/serverspec/*_spec.rb'
+  
