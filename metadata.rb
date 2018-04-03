@@ -4,7 +4,7 @@ maintainer_email 'tech-team@7digital.com'
 license 'MIT'
 description 'Installs Grafana & Graphite'
 long_description 'Runs them via Docker'
-version '4.2.1' # update in the graphite integration test as well
+version '5.0.4' # update in the graphite integration test as well
 
 supports 'debian'
 

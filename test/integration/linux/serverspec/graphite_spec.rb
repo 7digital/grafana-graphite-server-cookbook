@@ -2,7 +2,7 @@ require 'serverspec'
 require 'securerandom'
 set :backend, :exec
 
-cookbook_version = '4.2.1' # from metadata.rb
+cookbook_version = '5.0.4' # from metadata.rb
 
 describe 'graphite' do
   describe docker_image("7d-graphite-statsd:#{cookbook_version}") do
