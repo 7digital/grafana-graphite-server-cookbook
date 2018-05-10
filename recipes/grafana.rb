@@ -1,5 +1,5 @@
 grafana_repo = 'grafana/grafana'
-grafana_version = '5.0.4'
+grafana_version = '4.2.0'
 
 docker_image grafana_repo do
   tag grafana_version
